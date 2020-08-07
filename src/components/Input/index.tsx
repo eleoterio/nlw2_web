@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -7,16 +7,16 @@ import backIcon from '../../assets/images/icons/back.svg'
 
 import './styles.css';
 
-interface InputHeaderProps {
+interface InputHeaderProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
 }
 
-const Input: React.FC<InputHeaderProps> = (props) => {
+const Input: React.FC<InputHeaderProps> = ({ id, label, ...rest }) => {
   return(
     <div className="input-block">
-      <label htmlFor={props.id}>{props.label}</label>
-      <input type="text" id={props.id}/>
+      <label htmlFor={id}>{label}</label>
+      <input type="text" id={id} {...rest} />
     </div>
   );
 }
